@@ -1,5 +1,6 @@
 package extraMile1;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,10 +8,12 @@ import java.util.List;
 public class Classroom {
     private StudentGradesList studentList;
     private List<StudentGrade> studentGradesList;
+    private Letter letter;
 
-    public Classroom(StudentGradesList studentList) {
+    public Classroom(StudentGradesList studentList, Letter letter) {
         this.studentList = studentList;
         this.studentGradesList = studentList.readStudentList();
+        this.letter = letter;
     }
 
     public List<Integer> getGradesForDiscipline(String discipline) {
@@ -93,5 +96,11 @@ public class Classroom {
         return "Classroom{" +
                 "studentGradesList = " + studentGradesList +
                 '}';
+    }
+
+    public void writeLetters() throws IOException {
+        for (StudentGrade studentGrade : this.studentGradesList) {
+            letter.writeLetter(studentGrade);
+        }
     }
 }

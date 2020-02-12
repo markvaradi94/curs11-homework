@@ -1,11 +1,13 @@
 package extraMile1;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         StudentGradesList list = new StudentGradesList();
-        Classroom classroom = new Classroom(list);
+        Letter letter = new Letter();
+        Classroom classroom = new Classroom(list, letter);
         System.out.println(classroom.getGradesForDiscipline("mathematics"));
         System.out.println("-----------------------------------------------------------------------------------------");
         System.out.println(classroom.getGradesForStudent("Branwen Evelina"));
@@ -23,6 +25,6 @@ public class Main {
         System.out.println(classroom.getWorstGrade("computer science"));
         System.out.println("-----------------------------------------------------------------------------------------");
         System.out.println(classroom.toString());
-
+        classroom.writeLetters();
     }
 }
